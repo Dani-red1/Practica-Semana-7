@@ -1,0 +1,58 @@
+﻿@model RegistroComunitarioComunidadConectada.Web.Models.ParticipantesViewModel
+
+@{
+    ViewData["Title"] = "Registro de Participantes";
+}
+
+<h2 class="display-4 mb-4">Formulario de Registro de Vecinos</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-controller="Participantes" asp-action="Registrar" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+            <div class="mb-3">
+                <label asp-for="NuevoParticipante.Identificacion" class="form-label"></label>
+                <input asp-for="NuevoParticipante.Identificacion" class="form-control" />
+                <span asp-validation-for="NuevoParticipante.Identificacion" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NuevoParticipante.Nombre" class="form-label"></label>
+                <input asp-for="NuevoParticipante.Nombre" class="form-control" />
+                <span asp-validation-for="NuevoParticipante.Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Registrar Participante</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+
+<h2 class="display-4 mb-4">Lista de Participantes Registrados</h2>
+
+@if (Model.ListaParticipantes != null && Model.ListaParticipantes.Any())
+{
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.NuevoParticipante.Identificacion)</th>
+                <th>@Html.DisplayNameFor(model => model.NuevoParticipante.Nombre)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ListaParticipantes) 
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Identificacion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

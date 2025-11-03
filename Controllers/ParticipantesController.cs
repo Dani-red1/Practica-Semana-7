@@ -9,17 +9,22 @@ namespace RegistroComunitarioComunidadConectada.Web.Controllers
     {
         private readonly ParticipanteRepo _repositorio;
 
-        
+
         public ParticipantesController(ParticipanteRepo repositorio)
         {
             _repositorio = repositorio;
         }
 
-       
+
+
         public IActionResult Index()
         {
-            var participantes = _repositorio.GetAll();
-            return View(participantes);
+            var viewModel = new ParticipantesViewModel
+            {
+                ListaParticipantes = _repositorio.GetAll()
+
+            };
+            return View(viewModel);
         }
 
 
@@ -34,8 +39,14 @@ namespace RegistroComunitarioComunidadConectada.Web.Controllers
             }
 
 
-            var participantes = _repositorio.GetAll();
-            return View("Index", participantes);
+            var viewModelConError = new ParticipantesViewModel
+            {
+                ListaParticipantes = _repositorio.GetAll(),
+                NuevoParticipante = nuevoParticipante
+            };
+
+            return View("Index", viewModelConError);
+
         }
     }
 }
