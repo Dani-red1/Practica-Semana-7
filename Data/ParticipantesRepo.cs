@@ -18,4 +18,5 @@ namespace RegistroComunitarioComunidadConectada.Web.Data
             return _participantes.AsReadOnly();
         }
     }
+
 }

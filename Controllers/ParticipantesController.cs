@@ -48,5 +48,6 @@ namespace RegistroComunitarioComunidadConectada.Web.Controllers
             return View("Index", viewModelConError);
 
         }
+
     }
 }

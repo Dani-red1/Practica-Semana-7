@@ -10,5 +10,6 @@ namespace RegistroComunitarioComunidadConectada.Web.Models
 
 
         public Participante NuevoParticipante { get; set; } = new Participante();
+
     }
 }

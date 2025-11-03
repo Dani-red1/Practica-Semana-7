@@ -1,10 +1,10 @@
 ﻿@model RegistroComunitarioComunidadConectada.Web.Models.ParticipantesViewModel
 
 @{
-    ViewData["Title"] = "Registro de Participantes";
+    ViewData["Title"] = "Comunidad Conectada: Registro";
 }
 
-<h2 class="display-4 mb-4">Formulario de Registro de Vecinos</h2>
+<h2 class="display-4 mb-4">Comunidad Conectada: Actividades </h2>
 <hr />
 
 <div class="row">
@@ -26,6 +26,41 @@
             </div>
 
             <div class="mb-3">
+                <label asp-for="NuevoParticipante.Apellidos" class="form-label"></label>
+                <input asp-for="NuevoParticipante.Apellidos" class="form-control" />
+                <span asp-validation-for="NuevoParticipante.Apellidos" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NuevoParticipante.Telefono" class="form-label"></label>
+                <input asp-for="NuevoParticipante.Telefono" class="form-control" />
+                <span asp-validation-for="NuevoParticipante.Telefono" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NuevoParticipante.CorreoElectronico" class="form-label"></label>
+                <input asp-for="NuevoParticipante.CorreoElectronico" class="form-control" />
+                <span asp-validation-for="NuevoParticipante.CorreoElectronico" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NuevoParticipante.Genero" class="form-label"></label>
+                <select asp-for="NuevoParticipante.Genero" class="form-select">
+                    <option value="">Seleccione...</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Otro">Otro</option>
+                </select>
+                <span asp-validation-for="NuevoParticipante.Genero" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NuevoParticipante.Edad" class="form-label"></label>
+                <input asp-for="NuevoParticipante.Edad" type="number" class="form-control" />
+                <span asp-validation-for="NuevoParticipante.Edad" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Registrar Participante</button>
             </div>
         </form>
@@ -34,7 +69,7 @@
 
 <hr />
 
-<h2 class="display-4 mb-4">Lista de Participantes Registrados</h2>
+Lista de Participantes Registrados
 
 @if (Model.ListaParticipantes != null && Model.ListaParticipantes.Any())
 {
@@ -43,16 +78,31 @@
             <tr>
                 <th>@Html.DisplayNameFor(model => model.NuevoParticipante.Identificacion)</th>
                 <th>@Html.DisplayNameFor(model => model.NuevoParticipante.Nombre)</th>
+                <th>@Html.DisplayNameFor(model => model.NuevoParticipante.Apellidos)</th>
+                <th>@Html.DisplayNameFor(model => model.NuevoParticipante.Telefono)</th>
+                <th>@Html.DisplayNameFor(model => model.NuevoParticipante.CorreoElectronico)</th>
+                <th>@Html.DisplayNameFor(model => model.NuevoParticipante.Genero)</th>
+                <th>@Html.DisplayNameFor(model => model.NuevoParticipante.Edad)</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.ListaParticipantes) 
+            @foreach (var item in Model.ListaParticipantes)
             {
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.Identificacion)</td>
                     <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Apellidos)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CorreoElectronico)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Genero)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Edad)</td>
                 </tr>
             }
         </tbody>
     </table>
+}
+else
+{
+    <p class="alert alert-info">Aún no hay participantes registrados por el momento.</p>
+
 }

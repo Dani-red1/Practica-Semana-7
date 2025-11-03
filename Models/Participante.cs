@@ -28,6 +28,7 @@ namespace RegistroComunitarioComunidadConectada.Web.Models
         [Range(1, 120, ErrorMessage = "La edad debe estar entre {1} y {2} años.")]
         public int Edad { get; set; }
     }
+
 }
 
 
